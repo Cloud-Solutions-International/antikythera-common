@@ -1,6 +1,8 @@
 package sa.com.cloudsolutions.antikythera.evaluator;
 
 import com.github.javaparser.ast.Node;
+import com.github.javaparser.ast.body.CallableDeclaration;
+import com.github.javaparser.ast.body.ConstructorDeclaration;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.expr.Expression;
 
@@ -24,4 +26,12 @@ public interface EvaluationEngine {
     void visit(MethodDeclaration md) throws ReflectiveOperationException;
 
     String getClassName();
+
+    Symbol executeMethod(CallableDeclaration<?> cd) throws ReflectiveOperationException;
+
+    Symbol executeMethod(MethodDeclaration md) throws ReflectiveOperationException;
+
+    void executeConstructor(CallableDeclaration<?> md) throws ReflectiveOperationException;
+
+    void executeConstructor(ConstructorDeclaration cd) throws ReflectiveOperationException;
 }
